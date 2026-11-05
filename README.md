@@ -1,11 +1,13 @@
-# Leandsay Lee — Personal Home Page
+# Leandsay Lee — Personal Website
 
-## Publish with GitHub Pages
-1. Create a public repository in your personal GitHub account.
-2. Upload `index.html` to the repository's root folder.
-3. Open **Settings → Pages**.
-4. Under Build and deployment, choose **Deploy from a branch**.
-5. Select `main` and `/ (root)`, then Save.
-6. Wait for GitHub Pages to publish your site.
+Files in this release:
+- `index.html` — Home page
+- `design-tools.html` — Design Tools page with the supplied interactive calculators
 
-The Home page uses a live Open-Meteo forecast for Cebu City and an embedded Google Calendar for Philippine holidays. It intentionally excludes employee names, birthdays, phone numbers, gender details, employer branding, and internal company tools.
+## Update your GitHub repository
+1. Extract this ZIP.
+2. Upload both `index.html` and `design-tools.html` to the root of your existing `leandsay` repository.
+3. Choose **Commit changes**. Keep the files at the repository root, not inside a subfolder.
+4. Refresh your GitHub Pages website.
+
+The Design Tools page retains the supplied calculator logic and pricing/rate values. Because the repository is public, anyone can view the HTML and its calculation rules. Confirm you are authorized to publish those values before uploading.
