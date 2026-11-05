@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="A general design workflow checklist.">
+<title>Design SOP | Leandsay Lee</title>
+<style>
+:root{--blue:#0844ac;--ink:#17233b;--muted:#68758b;--line:#e6ebf3;--bg:#f4f7fc}
+*{box-sizing:border-box}
+body{margin:0;background:#fff;color:var(--ink);font-family:Arial,Helvetica,sans-serif}
+.site-header{position:sticky;top:0;z-index:5;background:#fff;border-bottom:1px solid var(--line)}
+.nav-wrap{max-width:1240px;margin:auto;padding:14px 22px;display:flex;align-items:center;justify-content:space-between;gap:18px}
+.brand{font-weight:800;color:var(--blue);white-space:nowrap;letter-spacing:.2px}
+.site-nav{display:flex;gap:7px;flex-wrap:wrap;justify-content:flex-end}
+.site-nav a{padding:10px 13px;border-radius:9px;text-decoration:none;color:#31415c;font-size:13px;font-weight:700;border:1px solid transparent}
+.site-nav a:hover,.site-nav a.active{background:#eaf1ff;color:var(--blue);border-color:#d8e5ff}
+.clock{text-align:center;color:var(--blue);font-weight:700;padding:18px 12px;border-bottom:1px dashed var(--line)}
+.banner{background:var(--blue);color:#fff;text-align:center;padding:24px 16px}
+.banner h1{margin:0;font-size:clamp(26px,4vw,42px);font-weight:700}
+.subtitle{text-align:center;padding:24px 16px;color:#26334a;font-weight:600;border-bottom:1px dashed var(--line)}
+main{max-width:1100px;margin:28px auto;padding:0 20px 44px}
+.panel{background:#fff;border:1px solid var(--line);border-radius:16px;padding:22px;box-shadow:0 6px 22px rgba(24,48,90,.06)}
+.panel h2{text-align:center;margin:4px 0 18px;font-size:25px;color:#17233b}
+.progress-track{height:16px;background:#e7ebf2;border-radius:20px;overflow:hidden}
+.progress-fill{height:100%;width:0;background:linear-gradient(90deg,#2563eb,#60a5fa);transition:width .25s}
+.score{text-align:center;font-size:16px;font-weight:700;margin:14px 0;color:var(--blue)}
+.completion{display:none;text-align:center;color:#15803d;font-weight:700;font-size:20px;margin:10px 0 18px}
+.checklist{display:flex;flex-direction:column;gap:9px}
+.check-item{display:flex;align-items:flex-start;gap:12px;padding:12px 14px;border:1px solid #dce3ee;border-radius:9px;background:#fbfcff;cursor:pointer;line-height:1.5;transition:background .2s,border-color .2s}
+.check-item:hover{background:#f0f5ff;border-color:#b9cdf7}
+.check-item input{margin:3px 0 0;transform:scale(1.2);accent-color:var(--blue);flex:0 0 auto}
+.check-item.done{background:#effaf2;border-color:#b7e2c2;color:#64748b}
+.check-item.done span{text-decoration:line-through}
+.actions{display:flex;justify-content:flex-end;margin-top:18px}
+button{border:0;border-radius:8px;background:var(--blue);color:white;padding:10px 16px;font-weight:700;cursor:pointer}
+button:hover{background:#06358a}
+footer{text-align:center;color:var(--muted);font-size:12px;padding:20px}
+@media(max-width:760px){.nav-wrap{align-items:flex-start;flex-direction:column}.site-nav{justify-content:flex-start}main{padding:0 12px 30px}.panel{padding:16px}}
+</style>
+</head>
+<body>
+<header class="site-header">
+  <div class="nav-wrap">
+    <div class="brand">LEANDSAY LEE</div>
+    <nav class="site-nav" aria-label="Main navigation">
+      <a href="index.html">Home</a>
+      <a href="index.html#about">About</a>
+      <a href="index.html#projects">Projects</a>
+      <a href="design-tools.html">Design Tools</a>
+      <a class="active" href="design-sop.html">Design SOP</a>
+      <a href="index.html#resources">Resources</a>
+      <a href="index.html#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+<div class="clock" id="clock">Loading Philippine time...</div>
+<section class="banner"><h1>Standard Operating Procedure</h1></section>
+<div class="subtitle">A consistent design workflow supports accuracy, quality, and professionalism.</div>
+<main>
+  <section class="panel">
+    <h2>🧾 Design Checklist</h2>
+    <div class="progress-track"><div class="progress-fill" id="progress"></div></div>
+    <div class="score">Completed: <span id="completed">0</span> / <span id="total">36</span></div>
+    <div class="completion" id="completion">🎉 All checklist items completed! 👏</div>
+    <div class="checklist" id="checklist">
+      <label class="check-item" for="task1">
+      <input type="checkbox" id="task1">
+      <span><strong>JOB INTAKE:</strong> Review new project requests and confirm that the required information is available.</span>
+    </label>
+<label class="check-item" for="task2">
+      <input type="checkbox" id="task2">
+      <span><strong>INITIAL DESIGN QUEUE:</strong> Identify projects awaiting an initial design.</span>
+    </label>
+<label class="check-item" for="task3">
+      <input type="checkbox" id="task3">
+      <span><strong>REVISION QUEUE:</strong> Identify projects requiring design changes or corrections.</span>
+    </label>
+<label class="check-item" for="task4">
+      <input type="checkbox" id="task4">
+      <span><strong>WORK STATUS:</strong> Update the project status before starting work.</span>
+    </label>
+<label class="check-item" for="task5">
+      <input type="checkbox" id="task5">
+      <span><strong>PROJECT REVIEW:</strong> Review the project request and confirm the applicable requirements.</span>
+    </label>
+<label class="check-item" for="task6">
+      <input type="checkbox" id="task6">
+      <span><strong>CREATE DESIGN:</strong> Open the design workspace and start the requested design.</span>
+    </label>
+<label class="check-item" for="task7">
+      <input type="checkbox" id="task7">
+      <span><strong>DESIGN NAMING:</strong> Use a clear, consistent name that identifies the draft and project type.</span>
+    </label>
+<label class="check-item" for="task8">
+      <input type="checkbox" id="task8">
+      <span><strong>PROJECT OVERVIEW:</strong> Return to the project overview and confirm the correct design is selected.</span>
+    </label>
+<label class="check-item" for="task9">
+      <input type="checkbox" id="task9">
+      <span><strong>CUSTOMER INFORMATION:</strong> Verify the project name, service address, email, and contact details where applicable.</span>
+    </label>
+<label class="check-item" for="task10">
+      <input type="checkbox" id="task10">
+      <span><strong>ENERGY USAGE:</strong> Review the annual or monthly energy consumption information.</span>
+    </label>
+<label class="check-item" for="task11">
+      <input type="checkbox" id="task11">
+      <span><strong>USAGE VALIDATION:</strong> Compare daily, monthly, and estimated usage; resolve discrepancies before proceeding.</span>
+    </label>
+<label class="check-item" for="task12">
+      <input type="checkbox" id="task12">
+      <span><strong>PROJECT ACCESS:</strong> Confirm that only authorized project collaborators have access.</span>
+    </label>
+<label class="check-item" for="task13">
+      <input type="checkbox" id="task13">
+      <span><strong>SALES REPRESENTATIVE:</strong> Verify the assigned representative or project owner; request clarification if it is missing.</span>
+    </label>
+<label class="check-item" for="task14">
+      <input type="checkbox" id="task14">
+      <span><strong>DESIGN WORKSPACE:</strong> Open the correct project design to begin the technical review.</span>
+    </label>
+<label class="check-item" for="task15">
+      <input type="checkbox" id="task15">
+      <span><strong>LOCATION VERIFICATION:</strong> Confirm the property location using reliable map or street-level references before using paid imagery.</span>
+    </label>
+<label class="check-item" for="task16">
+      <input type="checkbox" id="task16">
+      <span><strong>3D AND ELEVATION DATA:</strong> Load available 3D or elevation imagery and confirm that it has finished processing.</span>
+    </label>
+<label class="check-item" for="task17">
+      <input type="checkbox" id="task17">
+      <span><strong>TREE HEIGHT REVIEW:</strong> Review nearby tree heights and potential shading, including trees beyond the immediate property.</span>
+    </label>
+<label class="check-item" for="task18">
+      <input type="checkbox" id="task18">
+      <span><strong>IMAGERY REVIEW:</strong> Use the latest available aerial imagery for the property assessment.</span>
+    </label>
+<label class="check-item" for="task19">
+      <input type="checkbox" id="task19">
+      <span><strong>MAP COVERAGE:</strong> Confirm that the imagery covers the full roof and relevant surrounding area.</span>
+    </label>
+<label class="check-item" for="task20">
+      <input type="checkbox" id="task20">
+      <span><strong>IMAGERY CREDITS:</strong> Check available imagery credits and request additional coverage only when justified.</span>
+    </label>
+<label class="check-item" for="task21">
+      <input type="checkbox" id="task21">
+      <span><strong>ROOF TYPE:</strong> Identify whether the roof is pitched, flat, or a combination.</span>
+    </label>
+<label class="check-item" for="task22">
+      <input type="checkbox" id="task22">
+      <span><strong>PROPERTY TYPE:</strong> Identify the property type, such as a single-family home, duplex, or townhouse.</span>
+    </label>
+<label class="check-item" for="task23">
+      <input type="checkbox" id="task23">
+      <span><strong>ROOF MODEL:</strong> Review roof planes and outlines, including story count, pitch, azimuth, height, and roof material.</span>
+    </label>
+<label class="check-item" for="task24">
+      <input type="checkbox" id="task24">
+      <span><strong>GROUND-MOUNT REVIEW:</strong> For ground-mounted designs, assess available area, setbacks, obstructions, fencing, and shading.</span>
+    </label>
+<label class="check-item" for="task25">
+      <input type="checkbox" id="task25">
+      <span><strong>SHADING REVIEW:</strong> Review shading from trees, roof features, and other obstructions.</span>
+    </label>
+<label class="check-item" for="task26">
+      <input type="checkbox" id="task26">
+      <span><strong>AZIMUTH AND IRRADIANCE:</strong> Verify roof orientation, shading, and irradiance assumptions against project requirements.</span>
+    </label>
+<label class="check-item" for="task27">
+      <input type="checkbox" id="task27">
+      <span><strong>OBSTRUCTIONS:</strong> Identify and account for skylights, chimneys, vents, and other keep-out areas.</span>
+    </label>
+<label class="check-item" for="task28">
+      <input type="checkbox" id="task28">
+      <span><strong>SETBACKS AND ACCESS:</strong> Apply the applicable jurisdictional setbacks and required access pathways.</span>
+    </label>
+<label class="check-item" for="task29">
+      <input type="checkbox" id="task29">
+      <span><strong>TREE DETAILS:</strong> Record relevant tree type, height, trunk size, and canopy dimensions.</span>
+    </label>
+<label class="check-item" for="task30">
+      <input type="checkbox" id="task30">
+      <span><strong>FINAL SHADING CHECK:</strong> Recheck shading and obstructions after the design layout is complete.</span>
+    </label>
+<label class="check-item" for="task31">
+      <input type="checkbox" id="task31">
+      <span><strong>NORTH ORIENTATION:</strong> Confirm north orientation and use it when evaluating roof direction and potential shading.</span>
+    </label>
+<label class="check-item" for="task32">
+      <input type="checkbox" id="task32">
+      <span><strong>PANEL AND INVERTER:</strong> Verify panel model, wattage, orientation, inverter type, and any existing equipment.</span>
+    </label>
+<label class="check-item" for="task33">
+      <input type="checkbox" id="task33">
+      <span><strong>ARRAY SPACING:</strong> Check racking, panel orientation, spacing, and tilt against the applicable design requirements.</span>
+    </label>
+<label class="check-item" for="task34">
+      <input type="checkbox" id="task34">
+      <span><strong>PROJECT NOTES:</strong> Add clear notes about relevant assumptions, constraints, and items requiring follow-up.</span>
+    </label>
+<label class="check-item" for="task35">
+      <input type="checkbox" id="task35">
+      <span><strong>COMPLETION STATUS:</strong> Mark the design as complete only after all required design tasks are finished.</span>
+    </label>
+<label class="check-item" for="task36">
+      <input type="checkbox" id="task36">
+      <span><strong>FINAL QUALITY REVIEW:</strong> Review the complete proposal for missing information, inconsistencies, and additional required details.</span>
+    </label>
+    </div>
+    <div class="actions"><button type="button" id="reset">Reset checklist</button></div>
+  </section>
+</main>
+<footer>© <span id="year"></span> Leandsay Lee · Personal Website</footer>
+<script>
+const boxes=[...document.querySelectorAll('.check-item input')];
+function updateProgress(){
+  const done=boxes.filter(x=>x.checked).length;
+  document.getElementById('completed').textContent=done;
+  document.getElementById('progress').style.width=(done/boxes.length*100)+'%';
+  document.getElementById('completion').style.display=done===boxes.length?'block':'none';
+  boxes.forEach(x=>x.closest('.check-item').classList.toggle('done',x.checked));
+}
+boxes.forEach(x=>x.addEventListener('change',updateProgress));
+document.getElementById('reset').addEventListener('click',()=>{boxes.forEach(x=>x.checked=false);updateProgress();});
+function updateClock(){
+  document.getElementById('clock').textContent=new Intl.DateTimeFormat('en-PH',{timeZone:'Asia/Manila',weekday:'long',year:'numeric',month:'long',day:'numeric',hour:'numeric',minute:'2-digit',second:'2-digit'}).format(new Date())+' · Philippine Time';
+}
+updateClock();setInterval(updateClock,1000);
+document.getElementById('year').textContent=new Date().getFullYear();
+updateProgress();
+</script>
+</body>
+</html>
