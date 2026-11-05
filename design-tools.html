@@ -178,54 +178,98 @@ td:first-child {
 }
 </style>
 <style>
-.site-header{width:100%;background:#fff;border-bottom:1px solid #e6ebf3;margin:-20px 0 20px;padding:14px 22px;display:flex;align-items:center;justify-content:space-between;gap:18px;flex-wrap:wrap}
-.site-brand{font-size:14px;font-weight:800;color:#0844ac;letter-spacing:.2px}
-.site-nav{display:flex;gap:7px;flex-wrap:wrap}
-.site-nav a{display:inline-block;padding:9px 12px;border-radius:8px;text-decoration:none;color:#31415c;font-size:12px;font-weight:700;border:1px solid transparent}
-.site-nav a:hover,.site-nav a.active{background:#eaf1ff;color:#0844ac;border-color:#d8e5ff}
-.page-heading{width:100%;max-width:1200px;text-align:center;margin:0 auto 18px;color:#68758b;line-height:1.6}
-.page-heading h1{font-size:22px;margin:0 0 6px;color:#0844ac}
-@media(max-width:600px){.site-header{margin:-12px 0 16px;padding:12px}.site-nav a{padding:8px 9px}}
-</style>
-
-
-<style>
-html, body { width:100%; min-height:100%; }
+/* Shared site navigation — matches the Home page */
+* { box-sizing: border-box; }
+html, body { width: 100%; min-height: 100%; }
 body {
-  display:block !important;
-  padding:0 20px 32px !important;
-  margin:0 !important;
-  background:#fff;
+  display: block !important;
+  margin: 0 !important;
+  padding: 0 20px 36px !important;
+  min-height: 100vh;
+  background: #fff;
+  font-family: Arial, Helvetica, sans-serif;
 }
 .site-header {
-  width:calc(100% + 40px);
-  margin:0 -20px 22px !important;
-  padding:14px 32px !important;
-  min-height:68px;
+  width: calc(100% + 40px);
+  margin: 0 -20px 22px !important;
+  background: #fff;
+  border-bottom: 1px solid #e6ebf3;
+}
+.nav-wrap {
+  max-width: 1100px;
+  min-height: 58px;
+  margin: 0 auto;
+  padding: 10px 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+}
+.site-brand {
+  color: #0844ac;
+  font-size: 16px;
+  font-weight: 800;
+  letter-spacing: .2px;
+  white-space: nowrap;
+}
+.site-nav {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+  gap: 7px;
+}
+.site-nav a {
+  display: inline-block;
+  padding: 9px 13px;
+  border: 1px solid transparent;
+  border-radius: 9px;
+  color: #31415c;
+  font-size: 13px;
+  font-weight: 700;
+  text-decoration: none;
+}
+.site-nav a:hover, .site-nav a.active {
+  color: #0844ac;
+  background: #eaf1ff;
+  border-color: #d8e5ff;
 }
 .page-heading {
-  display:block; width:100%; max-width:1200px;
-  margin:0 auto 22px !important; text-align:center;
+  display: block;
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto 22px !important;
+  color: #68758b;
+  line-height: 1.6;
+  text-align: center;
+}
+.page-heading h1 {
+  margin: 0 0 6px;
+  color: #0844ac;
+  font-size: 24px;
 }
 .wrapper {
-  display:grid !important;
-  grid-template-columns:repeat(3,minmax(230px,260px));
-  justify-content:center !important;
-  align-items:start !important;
-  gap:16px !important;
-  width:100%; max-width:1200px; margin:0 auto;
+  display: grid !important;
+  grid-template-columns: repeat(3, minmax(230px, 260px));
+  justify-content: center !important;
+  align-items: start !important;
+  gap: 16px !important;
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
 }
-.card { width:100% !important; min-width:0; margin:0; }
-@media(max-width:850px) {
-  .wrapper { grid-template-columns:repeat(2,minmax(220px,260px)); }
+.card { width: 100% !important; min-width: 0; margin: 0; }
+@media (max-width: 850px) {
+  .nav-wrap { padding-left: 20px; padding-right: 20px; }
+  .wrapper { grid-template-columns: repeat(2, minmax(220px, 260px)); }
 }
-@media(max-width:560px) {
-  body { padding:0 12px 24px !important; }
-  .site-header {
-    width:calc(100% + 24px); margin:0 -12px 18px !important;
-    padding:12px !important;
-  }
-  .wrapper { grid-template-columns:minmax(0,320px); }
+@media (max-width: 600px) {
+  body { padding: 0 12px 28px !important; }
+  .site-header { width: calc(100% + 24px); margin: 0 -12px 18px !important; }
+  .nav-wrap { align-items: flex-start; flex-direction: column; padding: 12px; gap: 10px; }
+  .site-nav { justify-content: flex-start; }
+  .site-nav a { padding: 8px 9px; }
+  .wrapper { grid-template-columns: minmax(0, 320px); }
 }
 </style>
 
@@ -233,15 +277,18 @@ body {
 
 <body>
 <header class="site-header">
-  <div class="site-brand">LEANDSAY LEE</div>
-  <nav class="site-nav" aria-label="Main navigation">
-    <a href="index.html">Home</a>
-    <a href="index.html#about">About</a>
-    <a href="index.html#projects">Projects</a>
-    <a class="active" href="design-tools.html">Design Tools</a>
-    <a href="index.html#resources">Resources</a>
-    <a href="index.html#contact">Contact</a>
-  </nav>
+  <div class="nav-wrap">
+    <div class="site-brand">LEANDSAY LEE</div>
+    <nav class="site-nav" aria-label="Main navigation">
+      <a href="index.html">Home</a>
+      <a href="index.html#about">About</a>
+      <a href="index.html#projects">Projects</a>
+      <a class="active" href="design-tools.html">Design Tools</a>
+      <a href="design-sop.html">Design SOP</a>
+      <a href="index.html#resources">Resources</a>
+      <a href="index.html#contact">Contact</a>
+    </nav>
+  </div>
 </header>
 <div class="page-heading"><h1>Design Tools</h1>Personal calculators and utilities in one place.</div>
 <div class="wrapper">
