@@ -72,8 +72,8 @@ function doPost(e) {
     const row = [
       clean(data.designer),            // A Designers
       parseWorkDate(data.workDate),    // B Work Date
-      clean(data.startTime),           // C Start
-      clean(data.endTime),             // D End
+      timeToSheetValue(data.startTime), // C Start (numeric time value)
+      timeToSheetValue(data.endTime),   // D End (numeric time value)
       clean(data.jobId),               // E Job ID
       clean(data.customerName),        // F Customer Name
       clean(data.customerAddress),     // G Customer Address
@@ -91,6 +91,7 @@ function doPost(e) {
 
     sheet.getRange(targetRow, 1, 1, 17).setValues([row]);
     sheet.getRange(targetRow, 2).setNumberFormat("m/d/yyyy");
+    sheet.getRange(targetRow, 3, 1, 2).setNumberFormat("h:mm:ss AM/PM");
     SpreadsheetApp.flush();
 
     return jsonResponse({
@@ -174,6 +175,12 @@ function validateEntry(data) {
 function validTime(value) {
   return /^([01]?\d|2[0-3]):[0-5]\d$/.test(String(value || "").trim()) ||
     /^(\d{1,2}):([0-5]\d)\s?(AM|PM)$/i.test(String(value || "").trim());
+}
+
+
+function timeToSheetValue(value) {
+  const minutes = timeMinutes(value);
+  return minutes / 1440; // Google Sheets time serial: fraction of one day
 }
 
 function timeMinutes(value) {

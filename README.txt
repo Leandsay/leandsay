@@ -18,3 +18,5 @@ Note: Browser cross-origin submission uses no-cors, so the page cannot read the 
 Updated Web App endpoint to the latest URL supplied by the user.
 
 Confirmed target tab: JOB (gid=885676598).
+
+Final review fix: Start and End Time are converted to numeric Google Sheets time values and formatted as h:mm:ss AM/PM so Duration calculations can use them.
