@@ -181,136 +181,119 @@ td:first-child {
 
 
 <style id="design-tools-layout">
-/* Shared site header — identical structure and sizing across all pages */
-html, body { width: 100%; min-height: 100%; }
+/* Shared site header: same styling as index.html and design-sop.html */
+html, body { width:100%; min-height:100%; }
 body {
-  display: block !important;
-  margin: 0 !important;
-  padding: 0 0 32px !important;
-  min-height: 100vh;
-  background: #f5f7fc !important;
-  font-family: Arial, Helvetica, sans-serif;
+  display:block;
+  margin:0;
+  padding:0 0 32px;
+  min-height:100vh;
+  background:#f4f7fc;
+  color:#17233b;
+  font-family:Arial,Helvetica,sans-serif;
 }
 .site-header {
-  display: block !important;
-  position: sticky !important;
-  top: 0 !important;
-  z-index: 100 !important;
-  width: 100% !important;
-  margin: 0 !important;
-  padding: 0 !important;
-  background: #fff !important;
-  border: 0 !important;
-  border-bottom: 1px solid #e6ebf3 !important;
+  background:#fff;
+  border-bottom:1px solid #e6ebf3;
+  position:sticky;
+  top:0;
+  z-index:10;
+  width:100%;
 }
 .nav-wrap {
-  width: 100% !important;
-  max-width: 1300px !important;
-  min-height: 58px !important;
-  margin: 0 auto !important;
-  padding: 10px 22px !important;
-  display: flex !important;
-  flex-direction: row !important;
-  align-items: center !important;
-  justify-content: space-between !important;
-  gap: 18px !important;
+  max-width:1240px;
+  margin:auto;
+  padding:14px 22px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:18px;
 }
 .brand {
-  display: block !important;
-  flex: 0 0 auto !important;
-  margin: 0 !important;
-  color: #0844ac !important;
-  font-size: 16px !important;
-  font-weight: 800 !important;
-  letter-spacing: .2px !important;
-  white-space: nowrap !important;
+  display:block;
+  flex:0 0 auto;
+  margin:0;
+  color:#0844ac;
+  font-size:16px;
+  font-weight:800;
+  letter-spacing:.2px;
+  white-space:nowrap;
+  text-decoration:none;
 }
-.site-nav {
-  display: flex !important;
-  flex: 0 1 auto !important;
-  flex-direction: row !important;
-  align-items: center !important;
-  justify-content: flex-end !important;
-  flex-wrap: nowrap !important;
-  gap: 8px !important;
-  margin: 0 !important;
-  padding: 0 !important;
+nav {
+  display:flex;
+  gap:8px;
+  flex-wrap:wrap;
+  justify-content:flex-end;
+  align-items:center;
 }
-.site-nav a {
-  display: inline-block !important;
-  margin: 0 !important;
-  padding: 9px 13px !important;
-  border: 1px solid transparent !important;
-  border-radius: 9px !important;
-  color: #31415c !important;
-  background: transparent !important;
-  font-family: Arial, Helvetica, sans-serif !important;
-  font-size: 13px !important;
-  font-weight: 700 !important;
-  line-height: 1.3 !important;
-  text-decoration: none !important;
-  white-space: nowrap !important;
+nav a {
+  display:inline-block;
+  padding:10px 14px;
+  border:1px solid transparent;
+  border-radius:9px;
+  color:#31415c;
+  background:transparent;
+  font-family:Arial,Helvetica,sans-serif;
+  font-size:13px;
+  font-weight:700;
+  line-height:normal;
+  text-decoration:none;
+  white-space:nowrap;
+  transition:background .2s ease,color .2s ease,border-color .2s ease;
 }
-.site-nav a:hover, .site-nav a.active {
-  color: #0844ac !important;
-  background: #eaf1ff !important;
-  border-color: #d8e5ff !important;
+nav a:hover, nav a.active {
+  color:#0844ac;
+  background:#eaf1ff;
+  border-color:#d8e5ff;
 }
-
-/* Center the page title and tool cards beneath the shared header */
 .page-heading {
-  display: block !important;
-  width: min(100% - 32px, 1100px) !important;
-  margin: 26px auto 22px !important;
-  padding: 0 !important;
-  color: #68758b !important;
-  line-height: 1.6 !important;
-  text-align: center !important;
+  width:min(100% - 32px,1100px);
+  margin:26px auto 22px;
+  padding:0;
+  color:#68758b;
+  line-height:1.6;
+  text-align:center;
+  font-size:14px;
 }
 .page-heading h1 {
-  margin: 0 0 6px !important;
-  color: #0844ac !important;
-  font-size: 24px !important;
+  margin:0 0 6px;
+  color:#0844ac;
+  font-size:24px;
 }
 .wrapper {
-  display: grid !important;
-  width: min(100% - 32px, 1100px) !important;
-  max-width: 1100px !important;
-  margin: 0 auto !important;
-  padding: 0 !important;
-  grid-template-columns: repeat(3, minmax(0, 260px)) !important;
-  justify-content: center !important;
-  align-items: start !important;
-  gap: 16px !important;
+  display:grid;
+  width:min(100% - 32px,1100px);
+  max-width:1100px;
+  margin:0 auto;
+  padding:0;
+  grid-template-columns:repeat(3,minmax(0,260px));
+  justify-content:center;
+  align-items:start;
+  gap:16px;
 }
 .card {
-  width: 100% !important;
-  min-width: 0 !important;
-  margin: 0 !important;
-  align-self: start !important;
+  width:100%;
+  min-width:0;
+  margin:0;
+  align-self:start;
 }
 footer {
-  width: min(100% - 32px, 1100px) !important;
-  margin: 26px auto 0 !important;
-  text-align: center !important;
+  width:min(100% - 32px,1100px);
+  margin:26px auto 0;
+  text-align:center;
 }
-@media (max-width: 900px) {
-  .wrapper { grid-template-columns: repeat(2, minmax(0, 260px)) !important; }
+@media(max-width:900px) {
+  .wrapper { grid-template-columns:repeat(2,minmax(0,260px)); }
 }
-@media (max-width: 900px) {
-  .site-nav { flex-wrap: wrap !important; }
+@media(max-width:800px) {
+  .nav-wrap { align-items:flex-start; flex-direction:column; }
+  nav { justify-content:flex-start; }
 }
-@media (max-width: 760px) {
-  .nav-wrap {
-    align-items: flex-start !important;
-    flex-direction: column !important;
-    padding: 12px 16px !important;
-    gap: 8px !important;
-  }
-  .site-nav { justify-content: flex-start !important; }
-}
-@media (max-width: 600px) {
-  .wrapper { grid-template-columns: minmax(0, 320px) !important; }
+@media(max-width:600px) {
+  .nav-wrap { padding:12px; }
+  .wrapper { grid-template-columns:minmax(0,320px); }
+  .page-heading { width:calc(100% - 24px); }
 }
 </style>
 
@@ -319,13 +302,13 @@ footer {
 <body>
 <header class="site-header">
   <div class="nav-wrap">
-    <div class="brand">LEANDSAY LEE</div>
+    <a class="brand" href="index.html#home">LEANDSAY LEE</a>
 
 <nav aria-label="Main navigation">
   <a href="index.html#home">Home</a>
   <a href="index.html#about">About</a>
   <a href="index.html#projects">Projects</a>
-  <a href="design-tools.html">Design Tools</a>
+  <a class="active" href="design-tools.html">Design Tools</a>
   <a href="design-sop.html">Design SOP</a>
   <a href="job-entry.html">Job Entry</a>
   <a href="index.html#resources">Resources</a>
