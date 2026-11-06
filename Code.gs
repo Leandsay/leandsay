@@ -5,7 +5,7 @@
  */
 
 const SPREADSHEET_ID = "1DasfUbog8nHiT4KuwkNbzQHJ_jsVAbE6M1Qlvq7ehQw";
-const SHEET_GID = 1840782043;
+const SHEET_GID = 885676598;
 
 const WORK_TYPES = [
   "JOB", "DOWNTIME", "PENDING", "CANCEL",

@@ -16,3 +16,5 @@ R Duration and S In Hours are preserved/formula columns.
 Note: Browser cross-origin submission uses no-cors, so the page cannot read the server response. Verify submissions in the spreadsheet. State detection is based on a US state abbreviation or full state name typed in the address; it is not geocoding.
 
 Updated Web App endpoint to the latest URL supplied by the user.
+
+Confirmed target tab: JOB (gid=885676598).
