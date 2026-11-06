@@ -20,3 +20,5 @@ Updated Web App endpoint to the latest URL supplied by the user.
 Confirmed target tab: JOB (gid=885676598).
 
 Final review fix: Start and End Time are converted to numeric Google Sheets time values and formatted as h:mm:ss AM/PM so Duration calculations can use them.
+
+US date update: Work Date auto-fills using America/Denver (US Mountain Time, DST-aware). The stored value is yyyy-mm-dd; the spreadsheet date display is m/d/yyyy.

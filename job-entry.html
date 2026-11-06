@@ -46,7 +46,7 @@ button:disabled{opacity:.6;cursor:wait}.secondary{background:#eaf1ff;color:#1249
 <option>FLORES, JOHN MICHAEL S</option><option>RECAMADAS, XYRA MAE E</option>
 <option>SIMILATAN, WILMA</option><option>LENTIJAS, LEANDSAY LEE C</option>
 </select></div>
-<div class="field"><label for="workDate">Work Date *</label><input id="workDate" name="workDate" type="date" required readonly></div>
+<div class="field"><label for="workDate">Work Date * <span class="helper">(US date · MM/DD/YYYY)</span></label><input id="workDate" name="workDate" type="date" required readonly></div>
 <div class="field"><label for="workType">Work Type *</label><select id="workType" name="workType" required>
 <option>JOB</option><option>DOWNTIME</option><option>PENDING</option><option>CANCEL</option><option>BREAK</option><option>COACHING</option><option>MEETING</option><option>OUTAGE</option></select></div>
 <div class="field"><label for="startTime">Start Time *</label><input id="startTime" name="startTime" type="time" required></div>
@@ -70,7 +70,7 @@ button:disabled{opacity:.6;cursor:wait}.secondary{background:#eaf1ff;color:#1249
 </section></main>
 <script>
 const WEB_APP_URL="https://script.google.com/macros/s/AKfycbzwJMRo0nxpQcMEOJq4RTYb8isdSeutNexDCrsgjwN7txF1_53_MuZWMsp8si47NkpVOg/exec";
-function phToday(){return new Intl.DateTimeFormat("en-CA",{timeZone:"Asia/Manila",year:"numeric",month:"2-digit",day:"2-digit"}).format(new Date())}
+function usWorkDate(){return new Intl.DateTimeFormat("en-CA",{timeZone:"America/Denver",year:"numeric",month:"2-digit",day:"2-digit"}).format(new Date())}
 function updateClock(){
  const now=new Date();
  const d=new Intl.DateTimeFormat("en-PH",{timeZone:"Asia/Manila",weekday:"long",year:"numeric",month:"long",day:"numeric"}).format(now);
@@ -78,7 +78,7 @@ function updateClock(){
  document.getElementById("philTime").textContent=`${d} at ${t} · Philippine Time`;
 }
 updateClock();setInterval(updateClock,1000);
-const dateInput=document.getElementById("workDate");dateInput.value=phToday();
+const dateInput=document.getElementById("workDate");dateInput.value=usWorkDate();
 const stateMap={
 "ALABAMA":"AL","ALASKA":"AK","ARIZONA":"AZ","ARKANSAS":"AR","CALIFORNIA":"CA","COLORADO":"CO","CONNECTICUT":"CT","DELAWARE":"DE","FLORIDA":"FL","GEORGIA":"GA","HAWAII":"HI","IDAHO":"ID","ILLINOIS":"IL","INDIANA":"IN","IOWA":"IA","KANSAS":"KS","KENTUCKY":"KY","LOUISIANA":"LA","MAINE":"ME","MARYLAND":"MD","MASSACHUSETTS":"MA","MICHIGAN":"MI","MINNESOTA":"MN","MISSISSIPPI":"MS","MISSOURI":"MO","MONTANA":"MT","NEBRASKA":"NE","NEVADA":"NV","NEW HAMPSHIRE":"NH","NEW JERSEY":"NJ","NEW MEXICO":"NM","NEW YORK":"NY","NORTH CAROLINA":"NC","NORTH DAKOTA":"ND","OHIO":"OH","OKLAHOMA":"OK","OREGON":"OR","PENNSYLVANIA":"PA","RHODE ISLAND":"RI","SOUTH CAROLINA":"SC","SOUTH DAKOTA":"SD","TENNESSEE":"TN","TEXAS":"TX","UTAH":"UT","VERMONT":"VT","VIRGINIA":"VA","WASHINGTON":"WA","WEST VIRGINIA":"WV","WISCONSIN":"WI","WYOMING":"WY","DISTRICT OF COLUMBIA":"DC"};
 const stateAbbr=new Set(Object.values(stateMap));
@@ -113,7 +113,7 @@ form.addEventListener("submit",async ev=>{
   await fetch(WEB_APP_URL,{method:"POST",mode:"no-cors",headers:{"Content-Type":"application/x-www-form-urlencoded;charset=UTF-8"},body:new URLSearchParams({payload:JSON.stringify(data)}).toString()});
   status.className="success";
   status.textContent="Request sent. Check the Google Sheet to confirm the row was saved before submitting again.";
-  form.reset();dateInput.value=phToday();stateInput.value="";updateRequired();
+  form.reset();dateInput.value=usWorkDate();stateInput.value="";updateRequired();
  }catch(err){
   status.className="error";status.textContent="Could not send. Check your connection and Apps Script deployment access.";
  }finally{btn.disabled=false;btn.textContent="Submit Job Entry";}
