@@ -8,13 +8,13 @@
 <style>
 :root{--blue:#0844ac;--ink:#17233b;--muted:#68758b;--line:#e6ebf3;--bg:#f4f7fc}
 *{box-sizing:border-box}
-body{margin:0;background:#fff;color:var(--ink);font-family:Arial,Helvetica,sans-serif}
-.site-header{position:sticky;top:0;z-index:5;background:#fff;border-bottom:1px solid var(--line)}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:Arial,Helvetica,sans-serif}
+header{background:#fff;border-bottom:1px solid var(--line);position:sticky;top:0;z-index:10}
 .nav-wrap{max-width:1240px;margin:auto;padding:14px 22px;display:flex;align-items:center;justify-content:space-between;gap:18px}
-.brand{font-weight:800;color:var(--blue);white-space:nowrap;letter-spacing:.2px}
-.site-nav{display:flex;gap:7px;flex-wrap:wrap;justify-content:flex-end}
-.site-nav a{padding:10px 13px;border-radius:9px;text-decoration:none;color:#31415c;font-size:13px;font-weight:700;border:1px solid transparent}
-.site-nav a:hover,.site-nav a.active{background:#eaf1ff;color:var(--blue);border-color:#d8e5ff}
+.brand{font-weight:800;color:var(--blue);letter-spacing:.2px;white-space:nowrap;text-decoration:none}
+nav{display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end}
+nav a{display:inline-block;padding:10px 14px;border-radius:9px;text-decoration:none;color:#31415c;font-size:13px;font-weight:700;border:1px solid transparent;transition:background .2s ease,color .2s ease,border-color .2s ease}
+nav a:hover,nav a.active{background:#eaf1ff;color:var(--blue);border-color:#d8e5ff}
 .clock{text-align:center;color:var(--blue);font-weight:700;padding:18px 12px;border-bottom:1px dashed var(--line)}
 .banner{background:var(--blue);color:#fff;text-align:center;padding:24px 16px}
 .banner h1{margin:0;font-size:clamp(26px,4vw,42px);font-weight:700}
@@ -36,25 +36,25 @@ main{max-width:1100px;margin:28px auto;padding:0 20px 44px}
 button{border:0;border-radius:8px;background:var(--blue);color:white;padding:10px 16px;font-weight:700;cursor:pointer}
 button:hover{background:#06358a}
 footer{text-align:center;color:var(--muted);font-size:12px;padding:20px}
-@media(max-width:760px){.nav-wrap{align-items:flex-start;flex-direction:column}.site-nav{justify-content:flex-start}main{padding:0 12px 30px}.panel{padding:16px}}
+@media(max-width:800px){.nav-wrap{align-items:flex-start;flex-direction:column}nav{justify-content:flex-start}}
+@media(max-width:760px){main{padding:0 12px 30px}.panel{padding:16px}}
+@media(max-width:480px){.nav-wrap{padding:12px}}
 </style>
 </head>
 <body>
-<header class="site-header">
+<header>
   <div class="nav-wrap">
-    <div class="brand">LEANDSAY LEE</div>
-
-<nav aria-label="Main navigation">
-  <a href="index.html#home">Home</a>
-  <a href="index.html#about">About</a>
-  <a href="index.html#projects">Projects</a>
-  <a href="design-tools.html">Design Tools</a>
-  <a href="design-sop.html">Design SOP</a>
-  <a href="job-entry.html">Job Entry</a>
-  <a href="index.html#resources">Resources</a>
-  <a href="index.html#contact">Contact</a>
-</nav>
-
+    <a class="brand" href="index.html#home">LEANDSAY LEE</a>
+    <nav aria-label="Main navigation">
+      <a href="index.html#home">Home</a>
+      <a href="index.html#about">About</a>
+      <a href="index.html#projects">Projects</a>
+      <a href="design-tools.html">Design Tools</a>
+      <a class="active" aria-current="page" href="design-sop.html">Design SOP</a>
+      <a href="job-entry.html">Job Entry</a>
+      <a href="index.html#resources">Resources</a>
+      <a href="index.html#contact">Contact</a>
+    </nav>
   </div>
 </header>
 <div class="clock" id="clock">Loading Philippine time...</div>
