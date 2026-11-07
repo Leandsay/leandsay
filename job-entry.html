@@ -1,122 +1,413 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Job Entry | Leandsay Lee</title>
+
 <style>
-*{box-sizing:border-box}html,body{margin:0;min-height:100%;font-family:Arial,Helvetica,sans-serif;color:#14213d}
-body{background:#f4f7fd}.site-header{position:sticky;top:0;z-index:100;width:100%;background:#fff;border-bottom:1px solid #e6ebf3}
+*{box-sizing:border-box}
+html,body{margin:0;min-height:100%;font-family:Arial,Helvetica,sans-serif;color:#14213d}
+body{background:#f4f7fd}
+.site-header{position:sticky;top:0;z-index:100;width:100%;background:#fff;border-bottom:1px solid #e6ebf3}
 .nav-wrap{width:100%;max-width:1300px;min-height:58px;margin:0 auto;padding:10px 22px;display:flex;align-items:center;justify-content:space-between;gap:18px}
 .brand{color:#0844ac;font-size:16px;font-weight:800;letter-spacing:.2px;white-space:nowrap}
 .site-nav{display:flex;align-items:center;justify-content:flex-end;flex-wrap:wrap;gap:8px}
 .site-nav a{display:inline-block;padding:9px 13px;border:1px solid transparent;border-radius:9px;color:#31415c;font-size:13px;font-weight:700;text-decoration:none;white-space:nowrap}
 .site-nav a:hover,.site-nav a.active{color:#0844ac;background:#eaf1ff;border-color:#d8e5ff}
-.container{width:min(100% - 40px,1200px);margin:26px auto 48px}.topline{display:flex;justify-content:space-between;gap:16px;align-items:center;color:#0844ac;font-weight:700;margin-bottom:20px}
-.muted{color:#64748b;font-weight:400}h1{font-size:27px;margin:0 0 7px}.subtitle{color:#64748b;margin:0 0 24px}
+.container{width:min(100% - 40px,1200px);margin:26px auto 48px}
+.topline{display:flex;justify-content:space-between;gap:16px;align-items:center;color:#0844ac;font-weight:700;margin-bottom:20px}
+.muted{color:#64748b;font-weight:400}
+h1{font-size:27px;margin:0 0 7px}
+.subtitle{color:#64748b;margin:0 0 24px}
 .form-shell{background:#fff;border:1px solid #e0e8f5;border-radius:18px;padding:26px;box-shadow:0 10px 28px rgba(25,55,105,.06)}
-.form-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:17px}.field{display:flex;flex-direction:column;gap:7px}.field.full{grid-column:1/-1}
-label{font-size:13px;font-weight:700;color:#243b63}input,select,textarea{width:100%;min-height:42px;border:1px solid #cbd5e1;border-radius:8px;padding:10px 12px;font:14px Arial;background:#fff;color:#14213d}
-textarea{min-height:90px;resize:vertical}input:focus,select:focus,textarea:focus{outline:2px solid #c8d9ff;border-color:#3971df}
-.helper{font-size:11px;color:#718096}.actions{display:flex;align-items:center;gap:12px;margin-top:22px;flex-wrap:wrap}
-button{border:0;border-radius:9px;background:#1454bd;color:white;font-weight:700;padding:12px 22px;cursor:pointer}button:hover{background:#0d3f96}
-button:disabled{opacity:.6;cursor:wait}.secondary{background:#eaf1ff;color:#12499e}#status{font-size:13px;font-weight:700}
-#status.success{color:#167044}#status.error{color:#b42318}.note{margin-top:20px;padding:13px 15px;border-radius:10px;background:#f6f8fc;color:#53657f;font-size:12px;line-height:1.5}
-@media(max-width:850px){.form-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
-@media(max-width:650px){.nav-wrap{align-items:flex-start;flex-direction:column;padding:12px 16px;gap:8px}.site-nav{justify-content:flex-start}.container{width:min(100% - 24px,1200px);margin-top:18px}.topline{align-items:flex-start;flex-direction:column}.form-shell{padding:17px}.form-grid{grid-template-columns:1fr}.field.full{grid-column:auto}}
+.form-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:17px}
+.field{display:flex;flex-direction:column;gap:7px}
+.field.full{grid-column:1/-1}
+label{font-size:13px;font-weight:700;color:#243b63}
+input,select,textarea{width:100%;min-height:42px;border:1px solid #cbd5e1;border-radius:8px;padding:10px 12px;font:14px Arial;background:#fff;color:#14213d}
+textarea{min-height:90px;resize:vertical}
+input:focus,select:focus,textarea:focus{outline:2px solid #c8d9ff;border-color:#3971df}
+.helper{font-size:11px;color:#718096;font-weight:400}
+.actions{display:flex;align-items:center;gap:12px;margin-top:22px;flex-wrap:wrap}
+button{border:0;border-radius:9px;background:#1454bd;color:white;font-weight:700;padding:12px 22px;cursor:pointer}
+button:hover{background:#0d3f96}
+button:disabled{opacity:.6;cursor:wait}
+.secondary{background:#eaf1ff;color:#12499e}
+#status{font-size:13px;font-weight:700}
+#status.success{color:#167044}
+#status.error{color:#b42318}
+.note{margin-top:20px;padding:13px 15px;border-radius:10px;background:#f6f8fc;color:#53657f;font-size:12px;line-height:1.5}
+
+@media(max-width:850px){
+.form-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media(max-width:650px){
+.nav-wrap{align-items:flex-start;flex-direction:column;padding:12px 16px;gap:8px}
+.site-nav{justify-content:flex-start}
+.container{width:min(100% - 24px,1200px);margin-top:18px}
+.topline{align-items:flex-start;flex-direction:column}
+.form-shell{padding:17px}
+.form-grid{grid-template-columns:1fr}
+.field.full{grid-column:auto}
+}
 </style>
 </head>
+
 <body>
-<header class="site-header"><div class="nav-wrap">
+
+<header class="site-header">
+<div class="nav-wrap">
 <div class="brand">LEANDSAY LEE</div>
+
 <nav class="site-nav" aria-label="Main navigation">
-<a href="index.html">Home</a><a href="index.html#about">About</a><a href="index.html#projects">Projects</a>
-<a href="design-tools.html">Design Tools</a><a href="design-sop.html">Design SOP</a>
-<a class="active" href="job-entry.html">Job Entry</a><a href="index.html#resources">Resources</a><a href="index.html#contact">Contact</a>
-</nav></div></header>
+<a href="index.html">Home</a>
+<a href="index.html#about">About</a>
+<a href="index.html#projects">Projects</a>
+<a href="design-tools.html">Design Tools</a>
+<a href="design-sop.html">Design SOP</a>
+<a class="active" href="job-entry.html">Job Entry</a>
+<a href="index.html#resources">Resources</a>
+<a href="index.html#contact">Contact</a>
+</nav>
+</div>
+</header>
+
 <main class="container">
-<div class="topline"><span id="philTime">Loading Philippine date and time…</span><span class="muted">Job Entry Dashboard</span></div>
-<h1>Job Entry Form</h1><p class="subtitle">Daily Work Log &amp; Production Tracking</p>
+
+<div class="topline">
+<span id="philTime">Loading Philippine date and time…</span>
+<span class="muted">Job Entry Dashboard</span>
+</div>
+
+<h1>Job Entry Form</h1>
+<p class="subtitle">Daily Work Log &amp; Production Tracking</p>
+
 <section class="form-shell">
-<form id="jobForm"><div class="form-grid">
-<div class="field"><label for="designer">Designer *</label>
+
+<form id="jobForm">
+<div class="form-grid">
+
+<div class="field">
+<label for="designer">Designer *</label>
 <select id="designer" name="designer" required>
 <option value="">Select Designer</option>
-<option>COMBIS MARK KEM</option><option>DIGAL JADE </option>
-<option>FLORES JOHN MICHAEL</option><option>RECAMADAS XYRA MAE</option>
-<option>SIMILATAN WILMA</option><option>LENTIJAS LEANDSAY LEE</option>
-</select></div>
-<div class="field"><label for="workDate">Work Date * <span class="helper">(US date · MM/DD/YYYY)</span></label><input id="workDate" name="workDate" type="date" required readonly></div>
-<div class="field"><label for="workType">Work Type *</label><select id="workType" name="workType" required>
-<option>JOB</option><option>DOWNTIME</option><option>PENDING</option><option>CANCEL</option><option>BREAK</option><option>COACHING</option><option>MEETING</option><option>OUTAGE</option></select></div>
-<div class="field"><label for="startTime">Start Time *</label><input id="startTime" name="startTime" type="time" required></div>
-<div class="field"><label for="endTime">End Time *</label><input id="endTime" name="endTime" type="time" required></div>
-<div class="field"><label for="jobId">Job ID <span class="helper">(required for JOB)</span></label><input id="jobId" name="jobId" placeholder="Enter job ID"></div>
-<div class="field"><label for="jobType">Job Type *</label><select id="jobType" name="jobType" required>
-<option>INITIAL</option><option>REVISION</option><option>UPLOAD</option><option>DOWNTIME</option><option>BREAK</option><option>COACHING</option><option>TRAINING</option></select></div>
-<div class="field"><label for="customerName">Customer Name</label><input id="customerName" name="customerName" placeholder="Enter customer name"></div>
-<div class="field"><label for="customerAddress">Customer Address</label><input id="customerAddress" name="customerAddress" placeholder="Enter customer address"></div>
-<div class="field"><label for="state">State <span class="helper">(auto-detected from address)</span></label><input id="state" name="state" placeholder="Auto-detected" readonly></div>
-<div class="field"><label for="mountingType">Mounting Type *</label><select id="mountingType" name="mountingType" required><option>Roof</option><option>GM</option><option>Both</option></select></div>
-<div class="field"><label for="tool">Tool *</label><select id="tool" name="tool" required><option>Scanifly</option><option>Aurora</option></select></div>
-<div class="field"><label for="revision">Rev #</label><input id="revision" name="revision" placeholder="Enter revision number"></div>
-<div class="field"><label for="categories">Categories</label><input id="categories" name="categories" placeholder="Enter category"></div>
-<div class="field"><label for="salesRep">Sales Rep</label><input id="salesRep" name="salesRep" placeholder="Enter sales rep"></div>
-<div class="field full"><label for="remarks">Remarks</label><textarea id="remarks" name="remarks" placeholder="Add notes or details"></textarea></div>
+<option value="COMBIS, MARK KEM M">COMBIS, MARK KEM M</option>
+<option value="DIGAL, JADE C">DIGAL, JADE C</option>
+<option value="FLORES, JOHN MICHAEL S">FLORES, JOHN MICHAEL S</option>
+<option value="RECAMADAS, XYRA MAE E">RECAMADAS, XYRA MAE E</option>
+<option value="SIMILATAN, WILMA">SIMILATAN, WILMA</option>
+<option value="LENTIJAS, LEANDSAY LEE C">LENTIJAS, LEANDSAY LEE C</option>
+</select>
 </div>
-<div class="actions"><button id="submitBtn" type="submit">Submit Job Entry</button><button class="secondary" type="reset">Clear Form</button><span id="status" role="status" aria-live="polite"></span></div>
+
+<div class="field">
+<label for="workDate">Work Date * <span class="helper">(US Mountain Date)</span></label>
+<input id="workDate" name="workDate" type="date" required readonly>
+</div>
+
+<div class="field">
+<label for="workType">Work Type *</label>
+<select id="workType" name="workType" required>
+<option>JOB</option>
+<option>DOWNTIME</option>
+<option>PENDING</option>
+<option>CANCEL</option>
+<option>BREAK</option>
+<option>COACHING</option>
+<option>MEETING</option>
+<option>OUTAGE</option>
+</select>
+</div>
+
+<div class="field">
+<label for="startTime">Start Time *</label>
+<input id="startTime" name="startTime" type="time" required>
+</div>
+
+<div class="field">
+<label for="endTime">End Time *</label>
+<input id="endTime" name="endTime" type="time" required>
+</div>
+
+<div class="field">
+<label for="jobId">Job ID <span class="helper">(required for JOB)</span></label>
+<input id="jobId" name="jobId" placeholder="Enter job ID">
+</div>
+
+<div class="field">
+<label for="jobType">Job Type *</label>
+<select id="jobType" name="jobType" required>
+<option>INITIAL</option>
+<option>REVISION</option>
+<option>UPLOAD</option>
+<option>DOWNTIME</option>
+<option>BREAK</option>
+<option>COACHING</option>
+<option>TRAINING</option>
+</select>
+</div>
+
+<div class="field">
+<label for="customerName">Customer Name <span class="helper">(required for JOB)</span></label>
+<input id="customerName" name="customerName" placeholder="Enter customer name">
+</div>
+
+<div class="field">
+<label for="customerAddress">Customer Address</label>
+<input id="customerAddress" name="customerAddress" placeholder="Enter customer address">
+</div>
+
+<div class="field">
+<label for="state">State <span class="helper">(auto-detected from address)</span></label>
+<input id="state" name="state" placeholder="Auto-detected" readonly>
+</div>
+
+<div class="field">
+<label for="mountingType">Mounting Type <span class="helper">(required for JOB)</span></label>
+<select id="mountingType" name="mountingType">
+<option value="">Select Mounting Type</option>
+<option value="Roof">Roof</option>
+<option value="GM">GM</option>
+<option value="Both">Both</option>
+</select>
+</div>
+
+<div class="field">
+<label for="tool">Tool <span class="helper">(required for JOB)</span></label>
+<select id="tool" name="tool">
+<option value="">Select Tool</option>
+<option value="Scanifly">Scanifly</option>
+<option value="Aurora">Aurora</option>
+</select>
+</div>
+
+<div class="field">
+<label for="revision">Rev #</label>
+<input id="revision" name="revision" placeholder="Enter revision number">
+</div>
+
+<div class="field">
+<label for="categories">Categories</label>
+<input id="categories" name="categories" placeholder="Enter category">
+</div>
+
+<div class="field">
+<label for="salesRep">Sales Rep</label>
+<input id="salesRep" name="salesRep" placeholder="Enter sales rep">
+</div>
+
+<div class="field full">
+<label for="remarks">Remarks</label>
+<textarea id="remarks" name="remarks" placeholder="Add notes or details"></textarea>
+</div>
+
+</div>
+
+<div class="actions">
+<button id="submitBtn" type="submit">Submit Job Entry</button>
+<button class="secondary" type="reset">Clear Form</button>
+<span id="status" role="status" aria-live="polite"></span>
+</div>
+
 </form>
-<div class="note">Work Date is automatically set to today's Philippine date. State is detected from a US state abbreviation or full state name in the customer address. Column O remains blank; columns R and S are reserved for spreadsheet calculations.</div>
-</section></main>
+
+<div class="note">
+Work Date is automatically set to the current US Mountain date (America/Denver), including daylight saving time. State is detected from a US state abbreviation or full state name in the customer address. Column O remains blank; columns R and S are reserved for spreadsheet calculations.
+</div>
+
+</section>
+</main>
+
 <script>
-const WEB_APP_URL="https://script.google.com/macros/s/AKfycbzwJMRo0nxpQcMEOJq4RTYb8isdSeutNexDCrsgjwN7txF1_53_MuZWMsp8si47NkpVOg/exec";
-function usWorkDate(){return new Intl.DateTimeFormat("en-CA",{timeZone:"America/Denver",year:"numeric",month:"2-digit",day:"2-digit"}).format(new Date())}
-function updateClock(){
- const now=new Date();
- const d=new Intl.DateTimeFormat("en-PH",{timeZone:"Asia/Manila",weekday:"long",year:"numeric",month:"long",day:"numeric"}).format(now);
- const t=new Intl.DateTimeFormat("en-PH",{timeZone:"Asia/Manila",hour:"2-digit",minute:"2-digit",second:"2-digit",hour12:true}).format(now);
- document.getElementById("philTime").textContent=`${d} at ${t} · Philippine Time`;
+const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbzwJMRo0nxpQcMEOJq4RTYb8isdSeutNexDCrsgjwN7txF1_53_MuZWMsp8si47NkpVOg/exec";
+
+// US Mountain date, automatically adjusted for daylight saving time.
+function usWorkDate() {
+    const parts = new Intl.DateTimeFormat("en-US", {
+        timeZone: "America/Denver",
+        year: "numeric",
+        month: "2-digit",
+        day: "2-digit"
+    }).formatToParts(new Date());
+
+    const values = {};
+    parts.forEach(part => {
+        values[part.type] = part.value;
+    });
+
+    return `${values.year}-${values.month}-${values.day}`;
 }
-updateClock();setInterval(updateClock,1000);
-const dateInput=document.getElementById("workDate");dateInput.value=usWorkDate();
-const stateMap={
-"ALABAMA":"AL","ALASKA":"AK","ARIZONA":"AZ","ARKANSAS":"AR","CALIFORNIA":"CA","COLORADO":"CO","CONNECTICUT":"CT","DELAWARE":"DE","FLORIDA":"FL","GEORGIA":"GA","HAWAII":"HI","IDAHO":"ID","ILLINOIS":"IL","INDIANA":"IN","IOWA":"IA","KANSAS":"KS","KENTUCKY":"KY","LOUISIANA":"LA","MAINE":"ME","MARYLAND":"MD","MASSACHUSETTS":"MA","MICHIGAN":"MI","MINNESOTA":"MN","MISSISSIPPI":"MS","MISSOURI":"MO","MONTANA":"MT","NEBRASKA":"NE","NEVADA":"NV","NEW HAMPSHIRE":"NH","NEW JERSEY":"NJ","NEW MEXICO":"NM","NEW YORK":"NY","NORTH CAROLINA":"NC","NORTH DAKOTA":"ND","OHIO":"OH","OKLAHOMA":"OK","OREGON":"OR","PENNSYLVANIA":"PA","RHODE ISLAND":"RI","SOUTH CAROLINA":"SC","SOUTH DAKOTA":"SD","TENNESSEE":"TN","TEXAS":"TX","UTAH":"UT","VERMONT":"VT","VIRGINIA":"VA","WASHINGTON":"WA","WEST VIRGINIA":"WV","WISCONSIN":"WI","WYOMING":"WY","DISTRICT OF COLUMBIA":"DC"};
-const stateAbbr=new Set(Object.values(stateMap));
-function detectState(address){
- const upper=String(address||"").toUpperCase();
- const tokens=upper.match(/\b[A-Z]{2}\b/g)||[];
- for(const token of tokens){if(stateAbbr.has(token))return token;}
- const names=Object.keys(stateMap).sort((a,b)=>b.length-a.length);
- for(const name of names){if(new RegExp("\\b"+name.replace(/ /g,"\\s+")+"\\b").test(upper))return stateMap[name];}
- return "";
+
+// Philippine clock.
+function updateClock() {
+    const now = new Date();
+
+    const date = new Intl.DateTimeFormat("en-PH", {
+        timeZone: "Asia/Manila",
+        weekday: "long",
+        year: "numeric",
+        month: "long",
+        day: "numeric"
+    }).format(now);
+
+    const time = new Intl.DateTimeFormat("en-PH", {
+        timeZone: "Asia/Manila",
+        hour: "2-digit",
+        minute: "2-digit",
+        second: "2-digit",
+        hour12: true
+    }).format(now);
+
+    document.getElementById("philTime").textContent =
+        `${date} at ${time} · Philippine Time`;
 }
-const addressInput=document.getElementById("customerAddress");
-const stateInput=document.getElementById("state");
-addressInput.addEventListener("input",()=>{stateInput.value=detectState(addressInput.value);});
-const form=document.getElementById("jobForm");
-const workType=document.getElementById("workType");
-const jobId=document.getElementById("jobId");
-const customerName=document.getElementById("customerName");
-function updateRequired(){
- const isJob=workType.value==="JOB";
- jobId.required=isJob;customerName.required=isJob;
+
+updateClock();
+setInterval(updateClock, 1000);
+
+const dateInput = document.getElementById("workDate");
+dateInput.value = usWorkDate();
+
+// US state detection.
+const stateMap = {
+    "ALABAMA":"AL","ALASKA":"AK","ARIZONA":"AZ","ARKANSAS":"AR",
+    "CALIFORNIA":"CA","COLORADO":"CO","CONNECTICUT":"CT",
+    "DELAWARE":"DE","FLORIDA":"FL","GEORGIA":"GA","HAWAII":"HI",
+    "IDAHO":"ID","ILLINOIS":"IL","INDIANA":"IN","IOWA":"IA",
+    "KANSAS":"KS","KENTUCKY":"KY","LOUISIANA":"LA","MAINE":"ME",
+    "MARYLAND":"MD","MASSACHUSETTS":"MA","MICHIGAN":"MI",
+    "MINNESOTA":"MN","MISSISSIPPI":"MS","MISSOURI":"MO",
+    "MONTANA":"MT","NEBRASKA":"NE","NEVADA":"NV",
+    "NEW HAMPSHIRE":"NH","NEW JERSEY":"NJ","NEW MEXICO":"NM",
+    "NEW YORK":"NY","NORTH CAROLINA":"NC","NORTH DAKOTA":"ND",
+    "OHIO":"OH","OKLAHOMA":"OK","OREGON":"OR",
+    "PENNSYLVANIA":"PA","RHODE ISLAND":"RI",
+    "SOUTH CAROLINA":"SC","SOUTH DAKOTA":"SD",
+    "TENNESSEE":"TN","TEXAS":"TX","UTAH":"UT","VERMONT":"VT",
+    "VIRGINIA":"VA","WASHINGTON":"WA","WEST VIRGINIA":"WV",
+    "WISCONSIN":"WI","WYOMING":"WY",
+    "DISTRICT OF COLUMBIA":"DC"
+};
+
+const stateAbbr = new Set(Object.values(stateMap));
+
+function detectState(address) {
+    const upper = String(address || "").toUpperCase();
+
+    const tokens = upper.match(/\b[A-Z]{2}\b/g) || [];
+
+    for (const token of tokens) {
+        if (stateAbbr.has(token)) return token;
+    }
+
+    const names = Object.keys(stateMap).sort(
+        (a, b) => b.length - a.length
+    );
+
+    for (const name of names) {
+        const pattern = new RegExp(
+            "\\b" + name.replace(/ /g, "\\s+") + "\\b"
+        );
+
+        if (pattern.test(upper)) return stateMap[name];
+    }
+
+    return "";
 }
-workType.addEventListener("change",updateRequired);updateRequired();
-form.addEventListener("submit",async ev=>{
- ev.preventDefault();
- const btn=document.getElementById("submitBtn"),status=document.getElementById("status");
- status.className="";status.textContent="";
- if(!form.reportValidity())return;
- const data=Object.fromEntries(new FormData(form).entries());
- btn.disabled=true;btn.textContent="Submitting…";status.textContent="Sending entry…";
- try{
-  await fetch(WEB_APP_URL,{method:"POST",mode:"no-cors",headers:{"Content-Type":"application/x-www-form-urlencoded;charset=UTF-8"},body:new URLSearchParams({payload:JSON.stringify(data)}).toString()});
-  status.className="success";
-  status.textContent="Request sent. Check the Google Sheet to confirm the row was saved before submitting again.";
-  form.reset();dateInput.value=usWorkDate();stateInput.value="";updateRequired();
- }catch(err){
-  status.className="error";status.textContent="Could not send. Check your connection and Apps Script deployment access.";
- }finally{btn.disabled=false;btn.textContent="Submit Job Entry";}
+
+const addressInput = document.getElementById("customerAddress");
+const stateInput = document.getElementById("state");
+
+addressInput.addEventListener("input", () => {
+    stateInput.value = detectState(addressInput.value);
+});
+
+// Form requirements.
+const form = document.getElementById("jobForm");
+const workType = document.getElementById("workType");
+const jobId = document.getElementById("jobId");
+const customerName = document.getElementById("customerName");
+const mountingType = document.getElementById("mountingType");
+const tool = document.getElementById("tool");
+
+function updateRequired() {
+    const isJob = workType.value === "JOB";
+
+    jobId.required = isJob;
+    customerName.required = isJob;
+    mountingType.required = isJob;
+    tool.required = isJob;
+}
+
+workType.addEventListener("change", updateRequired);
+updateRequired();
+
+// Form submission.
+form.addEventListener("submit", async event => {
+    event.preventDefault();
+
+    const button = document.getElementById("submitBtn");
+    const status = document.getElementById("status");
+
+    status.className = "";
+    status.textContent = "";
+
+    if (!form.reportValidity()) return;
+
+    const data = Object.fromEntries(
+        new FormData(form).entries()
+    );
+
+    // Refresh the date immediately before submission.
+    data.workDate = usWorkDate();
+    dateInput.value = data.workDate;
+
+    button.disabled = true;
+    button.textContent = "Submitting...";
+    status.textContent = "Sending entry...";
+
+    try {
+        await fetch(WEB_APP_URL, {
+            method: "POST",
+            mode: "no-cors",
+            headers: {
+                "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8"
+            },
+            body: new URLSearchParams({
+                payload: JSON.stringify(data)
+            }).toString()
+        });
+
+        status.className = "success";
+        status.textContent =
+            "Request sent. Please verify the Google Sheet before submitting this entry again.";
+
+        // Do not reset the form automatically.
+        // The no-cors response cannot confirm whether Apps Script saved the row.
+
+    } catch (error) {
+        status.className = "error";
+        status.textContent =
+            "Could not send. Check your connection and Apps Script deployment access.";
+    } finally {
+        button.disabled = false;
+        button.textContent = "Submit Job Entry";
+    }
+});
+
+// Clear form behavior.
+form.addEventListener("reset", () => {
+    setTimeout(() => {
+        dateInput.value = usWorkDate();
+        stateInput.value = "";
+        updateRequired();
+        document.getElementById("status").textContent = "";
+        document.getElementById("status").className = "";
+    }, 0);
 });
 </script>
-</body></html>
+
+</body>
+</html>
