@@ -350,16 +350,15 @@ button:disabled { opacity: .6; cursor: wait; }
 </form>
 
 <div class="foot">
-  Work Date uses the US Mountain time zone. Entries are sent to the connected Google Sheets log.
+  Work Date uses the US Mountain time zone. Entries are saved directly to the connected Google Sheets log.
 </div>
 
 </main>
 
 <script>
 
-// YOUR EXISTING GOOGLE APPS SCRIPT WEB APP URL
-const WEB_APP_URL =
-"https://script.google.com/macros/s/AKfycbzwJMRo0nxpQcMEOJq4RTYb8isdSeutNexDCrsgjwN7txF1_53_MuZWMsp8si47NkpVOg/exec";
+// This page must be served by Google Apps Script HTML Service.
+// google.script.run is not available on GitHub Pages.
 
 // US MOUNTAIN DATE
 function getUSDate() {
@@ -466,57 +465,70 @@ function showStatus(message, type) {
   status.className = type;
 }
 
-// SUBMIT FORM
-form.addEventListener("submit", async event => {
+// SUBMIT FORM — Google Apps Script HTML Service
+form.addEventListener("submit", event => {
   event.preventDefault();
 
   if (!form.reportValidity()) return;
 
   const button = document.getElementById("submitBtn");
-  const status = document.getElementById("status");
+  const data = Object.fromEntries(new FormData(form).entries());
 
-  const data = Object.fromEntries(
-    new FormData(form).entries()
-  );
-
-  // Refresh US date before submission.
+  // Refresh US Mountain date immediately before submission.
   data.workDate = getUSDate();
 
   button.disabled = true;
   button.textContent = "Submitting...";
+  showStatus("Saving your entry...", "ok");
 
-  showStatus("Sending your entry...", "ok");
+  google.script.run
+    .withSuccessHandler(response => {
+      if (response && response.success) {
+        showStatus(
+          response.message + (response.row ? " (Row " + response.row + ")" : ""),
+          "ok"
+        );
+        // Keep the submitted values visible so the user can verify them.
+        // Refresh date only; do not clear the form automatically.
+        workDateInput.value = getUSDate();
+      } else {
+        showStatus(
+          response && response.message ? response.message : "The entry could not be saved.",
+          "err"
+        );
+      }
 
-  try {
-    await fetch(WEB_APP_URL, {
-      method: "POST",
-      mode: "no-cors",
-      headers: {
-        "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8"
-      },
-      body: new URLSearchParams({
-        payload: JSON.stringify(data)
-      }).toString()
-    });
+      button.disabled = false;
+      button.textContent = "Submit Job Entry";
+    })
+    .withFailureHandler(error => {
+      showStatus(
+        error && error.message ? error.message : "Unable to save the entry. Please try again.",
+        "err"
+      );
+      button.disabled = false;
+      button.textContent = "Submit Job Entry";
+    })
+    .submitJobEntry(data);
+});
 
+// Load server-side connection information and display the destination tab.
+google.script.run
+  .withSuccessHandler(response => {
+    if (response && response.success && response.sheetName) {
+      document.getElementById("sheetName").textContent =
+        "Connected to: " + response.sheetName;
+    } else if (response && response.message) {
+      showStatus(response.message, "err");
+    }
+  })
+  .withFailureHandler(error => {
     showStatus(
-      "Request sent. Please check your Google Sheet to confirm the entry was saved before submitting again.",
-      "ok"
-    );
-
-    // Intentionally do not reset the form automatically.
-    // no-cors does not allow the page to read the Apps Script response.
-
-  } catch (error) {
-    showStatus(
-      "Unable to send the entry. Check your internet connection and Apps Script deployment.",
+      error && error.message ? error.message : "Unable to connect to the spreadsheet.",
       "err"
     );
-  } finally {
-    button.disabled = false;
-    button.textContent = "Submit Job Entry";
-  }
-});
+  })
+  .getFormData();
 
 // CLEAR FORM
 form.addEventListener("reset", () => {
