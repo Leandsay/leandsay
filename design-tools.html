@@ -1,10 +1,10 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Utility Tools, Roof & Solar Calculators</title>
-
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Utility Tools, Roof &amp; Solar Calculators</title>
 <style>
 * {
     box-sizing: border-box;
@@ -177,9 +177,6 @@ td:first-child {
     }
 }
 </style>
-
-
-
 <style id="design-tools-layout">
 /* Shared site header: same styling as index.html and design-sop.html */
 html, body { width:100%; min-height:100%; }
@@ -296,9 +293,7 @@ footer {
   .page-heading { width:calc(100% - 24px); }
 }
 </style>
-
 </head>
-
 <body>
 <header class="site-header">
   <div class="nav-wrap">
@@ -319,220 +314,167 @@ footer {
 </header>
 <div class="page-heading"><h1>Design Tools</h1>Personal calculators and utilities in one place.</div>
 <div class="wrapper">
+<!-- 1. AUTO CAPITALIZE -->
 
-    <!-- 4. DURATION CALCULATOR -->
-    <div class="card">
-        <h1>Duration Calculator</h1>
+<!-- 2. AUTO SPACING -->
 
-        <label for="startTime">Start Time</label>
-        <input type="text" id="startTime"
-               placeholder="2:41:51 PM"
-               oninput="calcDuration()">
+<!-- 3. PHONE NUMBER CLEANER -->
 
-        <label for="endTime">End Time</label>
-        <input type="text" id="endTime"
-               placeholder="4:02:32 PM"
-               oninput="calcDuration()">
+<!-- 4. DURATION CALCULATOR -->
 
-        <h2>Duration</h2>
-        <div class="result" id="durationResult">—</div>
-    </div>
+<!-- 5. TIME AGO -->
 
-    <!-- 5. TIME AGO -->
-    <div class="card">
-        <h1>Time Ago</h1>
+<!-- 6. EDT TO MST CONVERTER -->
 
-        <div class="small">
-            Current Time: <span id="currentTime">—</span>
-        </div>
+<!-- 7. ROOF PRICE CALCULATOR -->
 
-        <label for="timeAgoInput">Time Ago</label>
-        <input type="text" id="timeAgoInput"
-               placeholder="e.g. 2h 30m or 150">
+<!-- 8. ROOF PRICE ADJUSTMENTS -->
 
-        <h2>Result</h2>
-        <div class="result" id="timeAgoResult">—</div>
-    </div>
+<!-- 9. ROOF SQUARES CALCULATOR -->
 
-    <!-- 6. EDT TO MST CONVERTER -->
-    <div class="card">
-        <h1>EDT → MST</h1>
+<!-- 10. TRENCHING CALCULATOR -->
 
-        <label for="edtInput">EDT Time</label>
-        <input type="text" id="edtInput"
-               placeholder="09:47 PM"
-               oninput="convertEDTtoMST()">
+<!-- 11. SOLAR SYSTEM SIZE CALCULATOR -->
 
-        <h2>MST Result</h2>
-        <div class="result" id="mstResult">—</div>
-    </div>
+<!-- 12. SOLAREDGE INVERTER SELECTOR -->
 
-    <!-- 7. ROOF PRICE CALCULATOR -->
-    <div class="card">
-        <h2>Roof Price Calculator</h2>
+<!-- 13. FEET TO INCHES CONVERTER -->
 
-        <label for="roofType">Select Roof Type</label>
-        <select id="roofType" onchange="toggleFlatInput()">
-            <option value="">-- Select Roof Type --</option>
-            <option value="preferred">Preferred — $3.75</option>
-            <option value="platinum">Platinum — $4.25</option>
-            <option value="partial">Partial Roof — $5.50</option>
-            <option value="flat">Flat Roof — $5.50</option>
-            <option value="cedar">Cedar Tear — $6.25</option>
-            <option value="tile">Tile / Slate — $7.75</option>
-            <option value="mixed">Mixed Roof</option>
-        </select>
+<!-- 14. SUBHUB UNIT PRICE ADJUSTER -->
 
-        <h3>Roof Area</h3>
-
-        <label for="mainSqft">Main Sqft</label>
-        <input type="number" id="mainSqft"
-               min="0" step="any"
-               placeholder="Enter main roof sqft">
-
-        <div id="flatSection" style="display:none;">
-            <label for="flatSqft">Flat Roof Sqft</label>
-            <input type="number" id="flatSqft"
-                   min="0" step="any"
-                   placeholder="Enter flat roof sqft">
-        </div>
-
-        <p class="warning" id="warning"></p>
-        <p class="result" id="unitPrice">Unit Price: —</p>
-        <p class="result" id="totalResult">TOTAL: —</p>
-
-        <div class="note">
+<div class="card">
+<h2>Manual Roof Price Calculator</h2>
+<label for="roofType">Select Roof Type</label>
+<select id="roofType" onchange="toggleFlatInput()">
+<option value="">-- Select Roof Type --</option>
+<option value="preferred">Preferred — $3.75</option>
+<option value="platinum">Platinum — $4.25</option>
+<option value="partial">Partial Roof — $5.50</option>
+<option value="flat">Flat Roof — $5.50</option>
+<option value="cedar">Cedar Tear — $6.25</option>
+<option value="tile">Tile / Slate — $7.75</option>
+<option value="mixed">Mixed Roof</option>
+</select>
+<h3>Roof Area</h3>
+<label for="mainSqft">Main Sqft</label>
+<input id="mainSqft" min="0" placeholder="Enter main roof sqft" step="any" type="number"/>
+<div id="flatSection" style="display:none;">
+<label for="flatSqft">Flat Roof Sqft</label>
+<input id="flatSqft" min="0" placeholder="Enter flat roof sqft" step="any" type="number"/>
+</div>
+<p class="warning" id="warning"></p>
+<p class="result" id="unitPrice">Unit Price: —</p>
+<p class="result" id="totalResult">TOTAL: —</p>
+<div class="note">
             Waste factor applied: <b>25%</b>
+</div>
+</div><div class="card">
+<h2>SubHub Unit Price Adjuster</h2>
+<label for="currentUnitPrice">Current Unit Price ($)</label>
+<input id="currentUnitPrice" min="0" placeholder="e.g. 650" step="any" type="number"/>
+<label for="currentNetPrice">Current Net Price ($)</label>
+<input id="currentNetPrice" min="0" placeholder="e.g. 11107.98" step="any" type="number"/>
+<label for="targetTotalPrice">Target Total Price ($)</label>
+<input id="targetTotalPrice" min="0" placeholder="e.g. 7406.25" step="any" type="number"/>
+<div class="result" id="requiredUnitPrice">
+            Required Unit Price: —
         </div>
-    </div>
-
-    <!-- 8. ROOF PRICE ADJUSTMENTS -->
-    <div class="card">
-        <h2>Roof Price Adjustments</h2>
-
-        <label for="partialFirst">1st Structure</label>
-        <input type="number" id="partialFirst"
-               min="0" step="any"
-               placeholder="Enter amount">
-
-        <label for="partialSecond">2nd Structure</label>
-        <input type="number" id="partialSecond"
-               min="0" step="any"
-               placeholder="Enter amount">
-
-        <label for="partialThird">3rd Structure</label>
-        <input type="number" id="partialThird"
-               min="0" step="any"
-               placeholder="Enter amount">
-
-        <label for="totalFinal">Subhub Total Price</label>
-        <input type="number" id="totalFinal"
-               min="0" step="any"
-               placeholder="Enter final total">
-
-        <div class="result" id="adjustmentResult"></div>
-    </div>
-
-    <!-- 9. ROOF SQUARES CALCULATOR -->
-    <div class="card">
-        <h2>Roof Squares Calculator</h2>
-
-        <label for="sqftInput">Roof Area (sqft)</label>
-        <input type="number" id="sqftInput"
-               min="0" step="any"
-               placeholder="Enter roof area">
-
-        <div class="result" id="squareResult">—</div>
-
-        <div class="note">
-            Adjusted Sqft = sqft × 1.25<br>
+<div class="note">
+            Formula: Current Unit Price × (Target Total ÷ Current Net Price).<br/>
+            Enter the calculated unit price in SubHub, then verify the updated net price.
+        </div>
+</div><div class="card">
+<h2>Roof Squares Calculator</h2>
+<label for="sqftInput">Roof Area (sqft)</label>
+<input id="sqftInput" min="0" placeholder="Enter roof area" step="any" type="number"/>
+<div class="result" id="squareResult">—</div>
+<div class="note">
+            Adjusted Sqft = sqft × 1.25<br/>
             Squares = Adjusted Sqft ÷ 100
         </div>
-    </div>
-
-    <!-- 10. TRENCHING CALCULATOR -->
-    <div class="card">
-        <h2>Trenching Calculator</h2>
-
-        <label for="trenchFeet">Trench Length (Feet)</label>
-        <input type="number" id="trenchFeet"
-               placeholder="18" min="0" step="1">
-
-        <label for="trenchInches">Additional Inches</label>
-        <input type="number" id="trenchInches"
-               placeholder="8" min="0" max="11" step="1">
-
-        <div class="result" id="trenchResult">—</div>
-
-        <div class="note">
-            Trenching Rate: <b>$30 / ft</b><br>
+</div><div class="card">
+<h2>SubHub Roof Price Adjustments for Mixed Roofs</h2>
+<label for="partialFirst">1st Structure</label>
+<input id="partialFirst" min="0" placeholder="Enter amount" step="any" type="number"/>
+<label for="partialSecond">2nd Structure</label>
+<input id="partialSecond" min="0" placeholder="Enter amount" step="any" type="number"/>
+<label for="partialThird">3rd Structure</label>
+<input id="partialThird" min="0" placeholder="Enter amount" step="any" type="number"/>
+<label for="totalFinal">Subhub Total Price</label>
+<input id="totalFinal" min="0" placeholder="Enter final total" step="any" type="number"/>
+<div class="result" id="adjustmentResult"></div>
+</div><div class="card">
+<h2>Trenching Calculator</h2>
+<label for="trenchFeet">Trench Length (Feet)</label>
+<input id="trenchFeet" min="0" placeholder="18" step="1" type="number"/>
+<label for="trenchInches">Additional Inches</label>
+<input id="trenchInches" max="11" min="0" placeholder="8" step="1" type="number"/>
+<div class="result" id="trenchResult">—</div>
+<div class="note">
+            Trenching Rate: <b>$30 / ft</b><br/>
             Minimum Charge: <b>$500</b>
-        </div>
-    </div>
-
-    <!-- 11. SOLAR SYSTEM SIZE CALCULATOR -->
-    <div class="card">
-        <h2>Solar System Size Calculator</h2>
-
-        <label for="panelWatt">Panel Wattage (W)</label>
-        <input type="number" id="panelWatt"
-               value="430" min="1" step="any">
-
-        <label for="targetSize">Target System Size (kW)</label>
-        <input type="number" id="targetSize"
-               value="3" min="0.01" step="0.01">
-
-        <div class="result" id="systemResult">—</div>
-
-        <div class="note">
+</div>
+</div><div class="card">
+<h2>Solar System Size Calculator</h2>
+<label for="panelWatt">Panel Wattage (W)</label>
+<input id="panelWatt" min="1" step="any" type="number" value="430"/>
+<label for="targetSize">Target System Size (kW)</label>
+<input id="targetSize" min="0.01" step="0.01" type="number" value="3"/>
+<div class="result" id="systemResult">—</div>
+<div class="note">
             The number of panels is rounded up to meet or slightly
             exceed the target system size.
         </div>
-    </div>
-
-    <!-- 12. SOLAREDGE INVERTER SELECTOR -->
-    <div class="card">
-        <h2>SolarEdge Inverter Selector</h2>
-
-        <label for="systemSize">System Size (kW)</label>
-        <input type="number" id="systemSize"
-               value="3.0" min="0.01" step="0.01">
-
-        <div class="result" id="inverterResult">—</div>
-
-        <div class="note">
+</div><div class="card">
+<h2>SolarEdge Inverter Selector</h2>
+<label for="systemSize">System Size (kW)</label>
+<input id="systemSize" min="0.01" step="0.01" type="number" value="3.0"/>
+<div class="result" id="inverterResult">—</div>
+<div class="note">
             Recommends the first listed SolarEdge inverter whose
             maximum PV array size meets or exceeds the entered
             system size. Confirm compatibility with the manufacturer's
             current specifications.
         </div>
-    </div>
-
-    <!-- 13. FEET TO INCHES CONVERTER -->
-    <div class="card">
-        <h2>Feet to Inches Converter</h2>
-
-        <label for="feetInput">Enter Feet</label>
-        <input type="number" id="feetInput"
-               placeholder="Enter feet" min="0" step="any">
-
-        <div class="result" id="feetResult">—</div>
-
-        <h3>Conversion History</h3>
-        <div id="feetHistoryList" class="small">
+</div><div class="card">
+<h2>Feet to Inches Converter</h2>
+<label for="feetInput">Enter Feet</label>
+<input id="feetInput" min="0" placeholder="Enter feet" step="any" type="number"/>
+<div class="result" id="feetResult">—</div>
+<h3>Conversion History</h3>
+<div class="small" id="feetHistoryList">
             No conversions yet.
         </div>
-
-        <button type="button" id="clearFeetHistory">
+<button id="clearFeetHistory" type="button">
             Clear History
         </button>
-    </div>
-
+</div><div class="card">
+<h1>Duration Calculator</h1>
+<label for="startTime">Start Time</label>
+<input id="startTime" oninput="calcDuration()" placeholder="2:41:51 PM" type="text"/>
+<label for="endTime">End Time</label>
+<input id="endTime" oninput="calcDuration()" placeholder="4:02:32 PM" type="text"/>
+<h2>Duration</h2>
+<div class="result" id="durationResult">—</div>
+</div><div class="card">
+<h1>Time Ago</h1>
+<div class="small">
+            Current Time: <span id="currentTime">—</span>
 </div>
-
+<label for="timeAgoInput">Time Ago</label>
+<input id="timeAgoInput" placeholder="e.g. 2h 30m or 150" type="text"/>
+<h2>Result</h2>
+<div class="result" id="timeAgoResult">—</div>
+</div><div class="card">
+<h1>EDT → MST</h1>
+<label for="edtInput">EDT Time</label>
+<input id="edtInput" oninput="convertEDTtoMST()" placeholder="09:47 PM" type="text"/>
+<h2>MST Result</h2>
+<div class="result" id="mstResult">—</div>
+</div></div>
 <script>
 // =================================
-// 4. DURATION CALCULATOR
+// 1. DURATION CALCULATOR
 // =================================
 function parseTime(str) {
     const match = str.match(
@@ -1106,6 +1048,54 @@ document.getElementById("clearFeetHistory")
         document.getElementById("feetInput").value = "";
     });
 
+
+
+// =================================
+// 14. SUBHUB UNIT PRICE ADJUSTER
+// =================================
+function calculateUnitPrice() {
+    const currentUnitValue =
+        document.getElementById("currentUnitPrice").value;
+    const currentNetValue =
+        document.getElementById("currentNetPrice").value;
+    const targetTotalValue =
+        document.getElementById("targetTotalPrice").value;
+    const output = document.getElementById("requiredUnitPrice");
+
+    if (currentUnitValue === "" ||
+        currentNetValue === "" ||
+        targetTotalValue === "") {
+        output.textContent = "Required Unit Price: —";
+        return;
+    }
+
+    const currentUnit = Number(currentUnitValue);
+    const currentNet = Number(currentNetValue);
+    const targetTotal = Number(targetTotalValue);
+
+    if (!Number.isFinite(currentUnit) ||
+        !Number.isFinite(currentNet) ||
+        !Number.isFinite(targetTotal) ||
+        currentUnit <= 0 || currentNet <= 0 || targetTotal < 0) {
+        output.textContent = "Please enter valid prices.";
+        return;
+    }
+
+    const newUnitPrice = currentUnit * (targetTotal / currentNet);
+
+    output.textContent =
+        "Required Unit Price: $" +
+        newUnitPrice.toFixed(10).replace(/0+$/, "").replace(/\\.$/, "");
+}
+
+[
+    "currentUnitPrice",
+    "currentNetPrice",
+    "targetTotalPrice"
+].forEach(id => {
+    document.getElementById(id)
+        .addEventListener("input", calculateUnitPrice);
+});
 
 // =================================
 // INITIAL CALCULATIONS
